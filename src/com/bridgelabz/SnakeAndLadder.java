@@ -10,18 +10,20 @@ public class SnakeAndLadder {
 
 
         while (PLAYER_POSITION < WINNING_POSITION) {
-            int diceroll = (int) (Math.random() * 6 + 1);   // For Generating 1 to 6 Number Randomly
+            int diceroll = (int) (Math.random() * 6 + 1);   // For Generating random 1 to 6 Number
+            int forWinGame = PLAYER_POSITION - diceroll;
             System.out.println("Diceroll You Got: " + diceroll);
 
 
 
 
-          //constants for option
-        int noPlay = 0;
-        int ladder = 1;
-        int snake = 2;
-            int optionCheck = (int) (Math.random() * 3);    // To check for options
+              //constants for option
+              int noPlay = 0;
+              int ladder = 1;
+              int snake = 2;
 
+            int optionCheck = (int) (Math.random() * 3);    // To check for options
+                if (forWinGame >= diceroll)
             // Condition checking
             switch (optionCheck) {
                 case 0:
