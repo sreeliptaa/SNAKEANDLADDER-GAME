@@ -1,35 +1,51 @@
 package com.bridgelabz;
 
 public class SnakeAndLadder {
+
+    public static final int WINNING_POSITION = 100;
+
     public static void main(String[] args) {
-        int startPosition = 0;                           // initialize startPosition to zero
-        int diceroll = (int) (Math.floor(Math.random() * 6) + 1);
+        int PLAYER_POSITION = 0;
         System.out.println("WELCOME TO SNAKE AND LADDER GAME");
-        System.out.println("Diceroll You Got: " + diceroll);
+
+
+        while (PLAYER_POSITION < WINNING_POSITION) {
+            int diceroll = (int) (Math.random() * 6 + 1);   // For Generating 1 to 6 Number Randomly
+            System.out.println("Diceroll You Got: " + diceroll);
+
+
+
 
           //constants for option
         int noPlay = 0;
         int ladder = 1;
         int snake = 2;
-        int newPositionofPlayer = 0;
+            int optionCheck = (int) (Math.random() * 3);    // To check for options
 
-        int optionCheck = (int) (Math.floor(Math.random() * 10) % 3);
+            // Condition checking
+            switch (optionCheck) {
+                case 0:
+                    System.out.println("No Play "); // PLAYER_POSITION IS 0
 
-        switch (optionCheck) {
-            case 0:
-                System.out.println("No PLAY");
-                newPositionofPlayer = 0;
-                break;
-            case 1:
-                System.out.println("The Player got Ladder and moves ahead by the no of Position:" + diceroll);
-                newPositionofPlayer = startPosition + diceroll;
-                break;
-            case 2:
-                System.out.println("The Player got Snake and moves behind by the no of Position: " + diceroll);
-                newPositionofPlayer = startPosition + diceroll;
-                System.out.println("Player position: " + newPositionofPlayer);
-                break;
+                    break;
+                case 1:
+                    System.out.println("You got Ladder");
+                    PLAYER_POSITION += diceroll;
+                    break;
+                case 2:
+                    System.out.println("You got Snake");
+                    PLAYER_POSITION -= diceroll;
+
+                    if (PLAYER_POSITION < 0) {
+                        System.out.println("You have to start from Zero ");
+                        PLAYER_POSITION = 0;
+                    }
+                    break;
+            }
+            System.out.println("Your position is :" + PLAYER_POSITION);
         }
+        System.out.println("You win the game ");
+
     }
 }
 
